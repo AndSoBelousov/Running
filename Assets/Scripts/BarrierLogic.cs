@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class BarrierLogic : MonoBehaviour
@@ -23,6 +22,4 @@ public class BarrierLogic : MonoBehaviour
             direction = -direction;
         }
     }
-
-
 }

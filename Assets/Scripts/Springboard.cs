@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -9,7 +8,7 @@ namespace Runner.player
     {
         private Material _springboardMaterial;
         private float _gravity = -9.81f;
-        [SerializeField] private float _bounceForce = 15f; // Сила подбрасывания
+        [SerializeField] private float _bounceForce = 15f; 
 
         private Vector3 _velocity;
         private void OnTriggerEnter(Collider other)

@@ -1,10 +1,8 @@
-using Runner.Input;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class FragmentMapСustomizer : MonoBehaviour
@@ -12,13 +10,13 @@ public class FragmentMapСustomizer : MonoBehaviour
     [SerializeField, Header("Игрок")] private int _health = 10;
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private TextMeshProUGUI _textProgress;
-    private int _score = 0;
+    [SerializeField] private TextMeshProUGUI _finalTextProgress;
 
+    private int _score = 0;
     private int _currentIndex = 0;
     private float _step = -9f;
     private float _lastBlock = -81f;
     private int _progress = 0;
-
 
 
     [SerializeField] private GameObject _panelRestart;
@@ -62,11 +60,12 @@ public class FragmentMapСustomizer : MonoBehaviour
         UpdateHealthUI();
     }
 
-
     private void PanelRestart()
     {
         Time.timeScale = 0;
         _panelRestart.SetActive(true);
+        _finalTextProgress.text = "Итого ты набрал " + _score.ToString() + " очков";
+
     }
 
     public void RestartGame()
@@ -85,8 +84,7 @@ public class FragmentMapСustomizer : MonoBehaviour
 
         _currentIndex++;
         _progress++;
-        //_progressText.text = _progress.ToString();
-
+        
         _score++;
         UpdateScoreText();
 

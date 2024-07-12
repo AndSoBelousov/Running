@@ -1,8 +1,6 @@
 using Runner.Input;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Runner.player
@@ -20,8 +18,8 @@ namespace Runner.player
         [Space(10)]
         [Header("Настройка усилителей")]
         [SerializeField, Range(1,2)] private float _tramplinePower = 1.5f;
-        [SerializeField, Range(5, 15)] private float _boostSpeed = 10f; // Скорость при ускорении
-        [SerializeField, Range(1, 5)] private float _boostDuration = 2f; // Длительность ускорения
+        [SerializeField, Range(5, 15)] private float _boostSpeed = 10f; 
+        [SerializeField, Range(1, 5)] private float _boostDuration = 2f; 
 
         [Space(10)]
         [Header("Технические настройки местности")]
@@ -69,7 +67,11 @@ namespace Runner.player
             _velocity.y += GravityValue * Time.deltaTime;
             _characterController.Move(_velocity * Time.deltaTime);
 
-            
+        }
+
+        public void SpeedBoost(float boost)
+        {
+            _forwardSpeed += boost;
         }
 
         private void OnEnable()
@@ -100,7 +102,7 @@ namespace Runner.player
             {
                 _velocity.y = -2;
                 _velocity.z = 0;
-                if (transform.position.z > 2.8f) //что бы сползать со стенок
+                if (transform.position.z > 2.8f)    //что бы сползать со стенок
                 {
                     _velocity = transform.right * -2;
                 }
@@ -111,7 +113,6 @@ namespace Runner.player
             }
             else if (Physics.CheckSphere(_groundCheck.position, _groundDistance, _tramplineMask)) Trampoline(_tramplinePower);
             else if (Physics.CheckSphere(_groundCheck.position, _groundDistance, _acceleratorMask)) StartCoroutine(SpeedBoostCoroutine());
-
 
         }
 

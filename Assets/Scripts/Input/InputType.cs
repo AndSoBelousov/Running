@@ -1,6 +1,4 @@
-﻿using System;
-
-
+﻿
 namespace Runner.Input
 {
     public enum InputType
